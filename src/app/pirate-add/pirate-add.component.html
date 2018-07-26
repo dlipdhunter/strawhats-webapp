@@ -1,0 +1,41 @@
+<h3 class="h3 md-4">Add Pirate</h3>
+<div class="row">
+  <div class="col-md-5">
+    <form (ngSubmit)="create()" [formGroup]="pirateAddForm">
+      <div class="md-form">
+        <i class="fa fa-user-plus prefix grey-text"></i>
+        <input type="text" formControlName="name" id="name" class="form-control validate" mdbInputDirective>
+        <label data-error="wrong" data-success="right" for="name">Name</label>
+      </div>
+
+      <div class="md-form">
+        <i class="fa fa-user prefix grey-text"></i>
+        <input type="text" formControlName="nickName" id="nickName" class="form-control validate" mdbInputDirective>
+        <label data-error="wrong" data-success="right" for="nickName">Nick Name</label>
+      </div>
+
+      <div class="md-form">
+        <i class="fa fa-ship prefix grey-text"></i>
+        <input type="text" formControlName="crewName" id="crewName" class="form-control validate" mdbInputDirective>
+        <label data-error="wrong" data-success="right" for="crewName">Crew Name</label>
+      </div>
+
+      <div class="md-form">
+        <i class="fa fa-suitcase prefix grey-text"></i>
+        <input type="text" formControlName="position" id="position" class="form-control validate" mdbInputDirective>
+        <label data-error="wrong" data-success="right" for="position">Position</label>
+      </div>
+
+      <div class="md-form">
+        <i class="fa fa-dollar prefix grey-text"></i>
+        <input type="number" formControlName="bounty" id="bounty" class="form-control validate" mdbInputDirective>
+        <label data-error="wrong" data-success="right" for="bounty">Bounty</label>
+      </div>
+
+      <div class="text-right">
+        <a routerLink="" class="btn btn-warning waves-light" mdbWavesEffect>Cancel</a>
+        <input [disabled]="!pirateAddForm.valid" type="submit" class="btn btn-default waves-light" mdbWavesEffect value="Save">
+      </div>
+    </form>
+  </div>
+</div>

@@ -1,0 +1,14 @@
+<div *ngIf="notification">
+  <div class="alert alert-success" *ngIf="notification.type == notificationType.success" [ngClass]="{'alert-dismissible': notification.dismissible}">
+    {{notification.message}}
+  </div>
+  <div class="alert alert-danger" *ngIf="notification.type == notificationType.danger" [ngClass]="{'alert-dismissible': notification.dismissible}">
+    {{notification.message}}
+  </div>
+  <div class="alert alert-warning" *ngIf="notification.type == notificationType.warning" [ngClass]="{'alert-dismissible': notification.dismissible}">
+    {{notification.message}}
+  </div>
+  <div class="alert alert-info" *ngIf="notification.type == notificationType.info" [ngClass]="{'alert-dismissible': notification.dismissible}">
+    {{notification.message}}
+  </div>
+</div>

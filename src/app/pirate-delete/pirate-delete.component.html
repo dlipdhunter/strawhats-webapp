@@ -1,0 +1,11 @@
+<div *ngIf="model">
+    <h3 class="h3 md-4">Confirmation</h3>
+
+    <p>Do you really want to delete the pirate {{model.name}}?</p>
+    
+    <button [disabled]="showSuccessAlert" class="btn btn-danger" (click)="deletePirate()">Yes</button>
+    <a routerLink="" [disabled]="showSuccessAlert" class="btn btn-default">No</a>
+</div>
+<div *ngIf="!model">
+  Wait...
+</div>

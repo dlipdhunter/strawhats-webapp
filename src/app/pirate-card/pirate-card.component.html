@@ -1,0 +1,13 @@
+<div class="card">
+
+  <!--Card content-->
+  <div class="card-body">
+      <!--Title-->
+      <h4 class="card-title">{{model.name}}</h4>
+      <!--Text-->
+      <p class="card-text">Also known as {{model.nickName}} is the {{model.position}} of {{model.crewName}} pirates with a bounty of ${{model.bounty}}.</p>
+      <a routerLink="/edit/{{model.id}}" class="btn btn-default waves-light" mdbWavesEffect>Edit</a>
+      <a routerLink="/delete/{{model.id}}" class="btn btn-danger waves-light" mdbWavesEffect>Delete</a>
+  </div>
+
+</div>
