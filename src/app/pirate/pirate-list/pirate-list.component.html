@@ -1,0 +1,13 @@
+<div class="row" *ngIf="pirates && pirates.length > 9">
+  <div class="col-md-12">
+      <app-pirate-card-add class="float-right"></app-pirate-card-add>
+  </div>
+</div>
+<div class="row">    
+  <app-pirate-card class="col-md-4" [model]="p" *ngFor="let p of pirates"></app-pirate-card>
+  <app-pirate-card-add class="col-md-4"></app-pirate-card-add>
+</div>
+
+<!-- <div *ngIf="!pirates || pirates.length==0">
+  <p>There are no pirates. click <a routerLink="/add" class="btn btn-default btn-sm waves-light">Add</a> to add a pirate.</p>
+</div> -->

@@ -1,9 +1,9 @@
 import { Component, OnInit } from '@angular/core';
-import { Pirate } from '../models/pirate';
-import { DataService } from '../services/data.service';
+import { Pirate } from '../../models/pirate';
+import { PirateService } from '../../services/pirate.service';
 import { Router, ActivatedRoute } from '@angular/router';
-import { CustomNotificationService } from '../services/custom-notification.service';
-import { CustomNotificationType } from '../models/custom-notification';
+import { CustomNotificationService } from '../../services/custom-notification.service';
+import { CustomNotificationType } from '../../models/custom-notification';
 
 @Component({
   selector: 'app-pirate-delete',
@@ -12,21 +12,21 @@ import { CustomNotificationType } from '../models/custom-notification';
 })
 export class PirateDeleteComponent implements OnInit {
 
-  constructor(private dataService: DataService, private router: Router, private activatedRoute: ActivatedRoute, private customNotificationService: CustomNotificationService) { }
+  constructor(private pirateService: PirateService, private router: Router, private activatedRoute: ActivatedRoute, private customNotificationService: CustomNotificationService) { }
 
   model: Pirate;
 
   ngOnInit() {
     this.activatedRoute.params.subscribe(params => {
       let id = +params['id'];
-      this.dataService.getPirate(id).subscribe(pirate => {
+      this.pirateService.get(id).subscribe(pirate => {
         this.model = pirate;
       });
     });
   }
 
   deletePirate() {
-    this.dataService.deletePirate(this.model.id).subscribe(
+    this.pirateService.remove(this.model.pirateID).subscribe(
       success => {
         this.customNotificationService.show({
           message: 'Successfully deleted.',

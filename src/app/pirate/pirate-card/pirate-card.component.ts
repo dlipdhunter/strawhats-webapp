@@ -1,5 +1,5 @@
 import { Component, OnInit, Input } from '@angular/core';
-import { Pirate } from '../models/pirate';
+import { Pirate } from '../../models/pirate';
 
 @Component({
   selector: 'app-pirate-card',

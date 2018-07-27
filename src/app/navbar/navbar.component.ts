@@ -29,7 +29,7 @@ export class NavbarComponent implements OnInit {
   }
 
   loadRoutes() {
-    this.menuItems.push({route: '/', name: 'Pirates', active: false});
-    this.menuItems.push({route: '/add', name: 'Add', active: false});
+    this.menuItems.push({route: '/pirates', name: 'Pirates', active: false});
+    // this.menuItems.push({route: '/piratecrews', name: 'Pirate Crews', active: false});
   }
 }

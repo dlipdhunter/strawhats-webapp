@@ -7,15 +7,18 @@ import { MDBBootstrapModule } from 'angular-bootstrap-md'
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { PirateListComponent } from './pirate-list/pirate-list.component';
-import { PirateCardComponent } from './pirate-card/pirate-card.component';
-import { PirateAddComponent } from './pirate-add/pirate-add.component';
-import { PirateEditComponent } from './pirate-edit/pirate-edit.component';
-import { PirateDeleteComponent } from './pirate-delete/pirate-delete.component';
-import { DataService } from './services/data.service';
+import { PirateListComponent } from './pirate/pirate-list/pirate-list.component';
+import { PirateCardComponent } from './pirate/pirate-card/pirate-card.component';
+import { PirateAddComponent } from './pirate/pirate-add/pirate-add.component';
+import { PirateEditComponent } from './pirate/pirate-edit/pirate-edit.component';
+import { PirateDeleteComponent } from './pirate/pirate-delete/pirate-delete.component';
+import { PirateService } from './services/pirate.service';
 import { NavbarComponent } from './navbar/navbar.component';
 import { NotificationComponent } from './notification/notification.component';
 import { CustomNotificationService } from './services/custom-notification.service';
+import { PirateCardAddComponent } from './pirate/pirate-card-add/pirate-card-add.component';
+import { PirateCrewAddComponent } from './pirate-crew/pirate-crew-add/pirate-crew-add.component';
+import { PirateCrewAddModalComponent } from './pirate-crew/pirate-crew-add-modal/pirate-crew-add-modal.component';
 
 @NgModule({
   declarations: [
@@ -26,7 +29,10 @@ import { CustomNotificationService } from './services/custom-notification.servic
     PirateEditComponent,
     PirateDeleteComponent,
     NavbarComponent,
-    NotificationComponent
+    NotificationComponent,
+    PirateCardAddComponent,
+    PirateCrewAddComponent,
+    PirateCrewAddModalComponent
   ],
   imports: [
     BrowserModule,
@@ -37,7 +43,7 @@ import { CustomNotificationService } from './services/custom-notification.servic
     ReactiveFormsModule
   ],
   schemas: [NO_ERRORS_SCHEMA],
-  providers: [DataService, CustomNotificationService],
+  providers: [PirateService, CustomNotificationService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

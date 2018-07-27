@@ -1,10 +1,12 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
-import { DataService } from '../services/data.service';
-import { Pirate } from '../models/pirate';
+import { PirateService } from '../../services/pirate.service';
+import { Pirate } from '../../models/pirate';
 import { Router } from '@angular/router';
-import { CustomNotificationService } from '../services/custom-notification.service';
-import { CustomNotificationType } from '../models/custom-notification';
+import { CustomNotificationService } from '../../services/custom-notification.service';
+import { CustomNotificationType } from '../../models/custom-notification';
+import { PirateCrew } from '../../models/pirate-crew';
+import { PirateCrewService } from '../../services/pirate-crew.service';
 
 @Component({
   selector: 'app-pirate-add',
@@ -13,11 +15,18 @@ import { CustomNotificationType } from '../models/custom-notification';
 })
 export class PirateAddComponent implements OnInit {
 
-  constructor(private formBuilder: FormBuilder, private dataService: DataService, private router: Router, private customNotificationService: CustomNotificationService) { }
+  constructor(
+    private formBuilder: FormBuilder, 
+    private pirateService: PirateService, 
+    private pirateCrewService: PirateCrewService, 
+    private router: Router, 
+    private customNotificationService: CustomNotificationService) { }
 
   pirateAddForm: FormGroup;
+  pirateCrews: PirateCrew[];
 
   ngOnInit() {
+    this.loadPirateCrews();
     this.initializeForm();
   }
 
@@ -25,7 +34,7 @@ export class PirateAddComponent implements OnInit {
     this.pirateAddForm = this.formBuilder.group({
       name: ['', Validators.required],
       nickName: ['', Validators.required],
-      crewName: ['', Validators.required],
+      pirateCrewID: ['', Validators.required],
       position: ['', Validators.required],
       bounty: ['', Validators.required]
     });
@@ -34,7 +43,7 @@ export class PirateAddComponent implements OnInit {
   create() {
     const pirate: Pirate = this.pirateAddForm.value as Pirate;
 
-    this.dataService.createPirate(pirate).subscribe(
+    this.pirateService.create(pirate).subscribe(
       success => {
         this.customNotificationService.show({
           message: 'Successfully added a pirate.',
@@ -50,5 +59,13 @@ export class PirateAddComponent implements OnInit {
           dismissible: false
         });
       });
+  }
+
+  loadPirateCrews() {
+    this.pirateCrewService.getAll().subscribe(
+      pirateCrews => {        
+        this.pirateCrews = pirateCrews;
+      }
+    );
   }
 }

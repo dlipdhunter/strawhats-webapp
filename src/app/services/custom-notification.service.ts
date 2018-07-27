@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { BehaviorSubject } from 'rxjs';
-import { CustomNotification, CustomNotificationType } from '../models/custom-notification';
+import { CustomNotification } from '../models/custom-notification';
 
 @Injectable({
   providedIn: 'root'
@@ -19,7 +19,7 @@ export class CustomNotificationService {
     if(!notification.dismissible) {
       setTimeout(() => {
         this.reset();
-      }, 1000);
+      }, 2000);
     }    
   }
 

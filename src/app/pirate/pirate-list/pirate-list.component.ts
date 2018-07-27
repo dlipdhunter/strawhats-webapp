@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { DataService } from '../services/data.service';
-import { Pirate } from '../models/pirate';
+import { PirateService } from '../../services/pirate.service';
+import { Pirate } from '../../models/pirate';
 
 @Component({
   selector: 'app-pirate-list',
@@ -9,12 +9,12 @@ import { Pirate } from '../models/pirate';
 })
 export class PirateListComponent implements OnInit {
 
-  constructor(private dataService: DataService) { }
+  constructor(private pirateService: PirateService) { }
 
   pirates: Pirate[];
 
   ngOnInit() {
-    this.dataService.getPirates().subscribe(pirates => 
+    this.pirateService.getAll().subscribe(pirates => 
       {
         this.pirates = pirates;        
       }
